@@ -1,32 +1,27 @@
-import CartModal from "components/cart/modal";
-import { getMenu } from "lib/shopify";
-import { Menu } from "lib/shopify/types";
 import Link from "next/link";
 import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
-import Search, { SearchSkeleton } from "./search";
 
-const STATIC_MENU: Menu[] = [
+export type NavItem = { title: string; path: string };
+
+const NAV: NavItem[] = [
   { title: "Science", path: "/science" },
   { title: "Materials", path: "/materials" },
   { title: "Bundles", path: "/#bundles" },
   { title: "About", path: "/about" },
 ];
 
-export async function Navbar() {
-  const shopMenu = await getMenu("next-js-frontend-header-menu");
-  const menu: Menu[] = shopMenu.length ? shopMenu : STATIC_MENU;
-
+export function Navbar() {
   return (
     <nav className="sticky top-0 z-40 border-b border-sage-100 bg-sand-50/80 backdrop-blur-md">
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-10">
         <div className="block flex-none md:hidden">
           <Suspense fallback={null}>
-            <MobileMenu menu={menu} />
+            <MobileMenu menu={NAV} />
           </Suspense>
         </div>
         <div className="flex w-full items-center">
-          <div className="flex w-full md:w-1/3">
+          <div className="flex w-full md:w-1/2">
             <Link
               href="/"
               prefetch={true}
@@ -38,7 +33,7 @@ export async function Navbar() {
               </span>
             </Link>
             <ul className="hidden gap-7 text-sm md:flex md:items-center">
-              {menu.map((item) => (
+              {NAV.map((item) => (
                 <li key={`${item.title}-${item.path}`}>
                   <Link
                     href={item.path}
@@ -51,12 +46,7 @@ export async function Navbar() {
               ))}
             </ul>
           </div>
-          <div className="hidden justify-center md:flex md:w-1/3">
-            <Suspense fallback={<SearchSkeleton />}>
-              <Search />
-            </Suspense>
-          </div>
-          <div className="flex items-center justify-end gap-3 md:w-1/3">
+          <div className="flex items-center justify-end gap-3 md:w-1/2">
             <Link
               href="/#bundles"
               prefetch={true}
@@ -64,7 +54,6 @@ export async function Navbar() {
             >
               Reserve
             </Link>
-            <CartModal />
           </div>
         </div>
       </div>

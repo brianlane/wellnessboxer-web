@@ -1,11 +1,7 @@
-import { CartProvider } from "components/cart/cart-context";
 import { Navbar } from "components/layout/navbar";
-import { WelcomeToast } from "components/welcome-toast";
-import { getCart } from "lib/shopify";
 import { baseUrl } from "lib/utils";
 import { Fraunces, Inter } from "next/font/google";
 import { ReactNode } from "react";
-import { Toaster } from "sonner";
 import "./globals.css";
 
 const inter = Inter({
@@ -44,13 +40,11 @@ export const metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: ReactNode;
 }) {
-  const cart = getCart();
-
   return (
     <html
       lang="en"
@@ -58,14 +52,8 @@ export default async function RootLayout({
       data-brand="wellness-boxer"
     >
       <body className="bg-sand-50 text-ink-900 antialiased">
-        <CartProvider cartPromise={cart}>
-          <Navbar />
-          <main>
-            {children}
-            <Toaster closeButton />
-            <WelcomeToast />
-          </main>
-        </CartProvider>
+        <Navbar />
+        <main>{children}</main>
       </body>
     </html>
   );

@@ -1,149 +1,142 @@
-import { GridTileImage } from "components/grid/tile";
 import Footer from "components/layout/footer";
-import { Gallery } from "components/product/gallery";
-import { ProductDescription } from "components/product/product-description";
-import { HIDDEN_PRODUCT_TAG } from "lib/constants";
-import { getProduct, getProductRecommendations } from "lib/shopify";
-import type { Image } from "lib/shopify/types";
-import type { Metadata } from "next";
+import { ReserveButton } from "components/marketing/reserve-button";
+import { getProduct, products } from "lib/products";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
-export async function generateMetadata(props: {
+export function generateStaticParams() {
+  return products.map((p) => ({ handle: p.handle }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
   params: Promise<{ handle: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
-  const product = await getProduct(params.handle);
-
-  if (!product) return notFound();
-
-  const { url, width, height, altText: alt } = product.featuredImage || {};
-  const indexable = !product.tags.includes(HIDDEN_PRODUCT_TAG);
-
+}) {
+  const { handle } = await params;
+  const product = getProduct(handle);
+  if (!product) return {};
   return {
-    title: product.seo.title || product.title,
-    description: product.seo.description || product.description,
-    robots: {
-      index: indexable,
-      follow: indexable,
-      googleBot: {
-        index: indexable,
-        follow: indexable,
-      },
-    },
-    openGraph: url
-      ? {
-          images: [
-            {
-              url,
-              width,
-              height,
-              alt,
-            },
-          ],
-        }
-      : null,
+    title: product.name,
+    description: product.description,
+    alternates: { canonical: `/product/${product.handle}` },
   };
 }
 
-export default async function ProductPage(props: {
+export default async function ProductPage({
+  params,
+}: {
   params: Promise<{ handle: string }>;
 }) {
-  const params = await props.params;
-  const product = await getProduct(params.handle);
-
+  const { handle } = await params;
+  const product = getProduct(handle);
   if (!product) return notFound();
-
-  const productJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.title,
-    description: product.description,
-    image: product.featuredImage.url,
-    offers: {
-      "@type": "AggregateOffer",
-      availability: product.availableForSale
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      priceCurrency: product.priceRange.minVariantPrice.currencyCode,
-      highPrice: product.priceRange.maxVariantPrice.amount,
-      lowPrice: product.priceRange.minVariantPrice.amount,
-    },
-  };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productJsonLd),
-        }}
-      />
-      <div className="mx-auto max-w-(--breakpoint-2xl) px-4">
-        <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 md:p-12 lg:flex-row lg:gap-8 dark:border-neutral-800 dark:bg-black">
-          <div className="h-full w-full basis-full lg:basis-4/6">
-            <Suspense
-              fallback={
-                <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden" />
-              }
-            >
-              <Gallery
-                images={product.images.slice(0, 5).map((image: Image) => ({
-                  src: image.url,
-                  altText: image.altText,
-                }))}
+      <article className="bg-sand-50 pb-20 md:pb-28">
+        <header className="border-b border-sage-100 bg-gradient-to-b from-sand-50 to-sage-50 px-6 py-12 lg:px-10">
+          <div className="mx-auto flex max-w-6xl items-center gap-3 text-xs tracking-[0.22em] text-sage-700 uppercase">
+            <Link href="/" className="hover:text-sage-900">
+              Home
+            </Link>
+            <span aria-hidden>/</span>
+            <span>{product.name}</span>
+          </div>
+        </header>
+
+        <div className="mx-auto mt-12 grid max-w-6xl gap-10 px-6 md:grid-cols-12 lg:gap-12 lg:px-10">
+          <div className="md:col-span-7">
+            <div className="shadow-sanctuary-lg relative aspect-[16/12] w-full overflow-hidden rounded-3xl bg-white ring-1 ring-sage-100">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                priority
+                sizes="(min-width: 1024px) 720px, 100vw"
+                className="object-cover"
               />
-            </Suspense>
+            </div>
           </div>
 
-          <div className="basis-full lg:basis-2/6">
-            <Suspense fallback={null}>
-              <ProductDescription product={product} />
-            </Suspense>
+          <div className="md:col-span-5">
+            {product.badge ? (
+              <span className="inline-flex rounded-full bg-sage-900 px-3 py-1 text-[10px] font-medium tracking-wider text-sand-50 uppercase">
+                {product.badge}
+              </span>
+            ) : null}
+            <h1 className="font-display mt-4 text-4xl leading-tight text-ink-900 md:text-5xl">
+              {product.name}
+            </h1>
+            <p className="mt-3 text-base text-sage-700">{product.tagline}</p>
+
+            <div className="mt-8 flex items-baseline gap-3">
+              <span className="font-display text-5xl text-ink-900">
+                {product.displayPrice}
+              </span>
+              <span className="text-sm text-ink-700">/ {product.displayUnit}</span>
+            </div>
+
+            <p className="mt-6 text-base leading-relaxed text-ink-700">
+              {product.description}
+            </p>
+
+            <ul className="mt-6 space-y-3 text-sm text-ink-700">
+              {product.perks.map((p) => (
+                <li key={p} className="flex gap-3">
+                  <span aria-hidden className="mt-1 select-none text-sage-700">
+                    &mdash;
+                  </span>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-10">
+              <ReserveButton
+                handle={product.handle}
+                label={`Reserve ${product.name}`}
+                block
+              />
+              <p className="mt-4 text-xs leading-relaxed text-sage-700">
+                Reservations are processed securely through Stripe. You will
+                be charged at checkout. Cancel any time before September 2026
+                fulfilment for a full refund. Subscriptions can be paused or
+                cancelled from your billing portal.
+              </p>
+            </div>
+
+            <dl className="mt-10 grid grid-cols-2 gap-6 border-t border-sage-100 pt-8 text-sm">
+              <div>
+                <dt className="text-xs tracking-wider text-sage-700 uppercase">
+                  Material
+                </dt>
+                <dd className="mt-1 text-ink-900">95% organic cotton, 5% Roica&trade; V550</dd>
+              </div>
+              <div>
+                <dt className="text-xs tracking-wider text-sage-700 uppercase">
+                  Made in
+                </dt>
+                <dd className="mt-1 text-ink-900">Barcelos, Portugal</dd>
+              </div>
+              <div>
+                <dt className="text-xs tracking-wider text-sage-700 uppercase">
+                  Certifications
+                </dt>
+                <dd className="mt-1 text-ink-900">OEKO-TEX&reg; Standard 100</dd>
+              </div>
+              <div>
+                <dt className="text-xs tracking-wider text-sage-700 uppercase">
+                  Ships
+                </dt>
+                <dd className="mt-1 text-ink-900">September 2026</dd>
+              </div>
+            </dl>
           </div>
         </div>
-        <RelatedProducts id={product.id} />
-      </div>
+      </article>
       <Footer />
     </>
-  );
-}
-
-async function RelatedProducts({ id }: { id: string }) {
-  const relatedProducts = await getProductRecommendations(id);
-
-  if (!relatedProducts.length) return null;
-
-  return (
-    <div className="py-8">
-      <h2 className="mb-4 text-2xl font-bold">Related Products</h2>
-      <ul className="flex w-full gap-4 overflow-x-auto pt-1">
-        {relatedProducts.map((product) => (
-          <li
-            key={product.handle}
-            className="aspect-square w-full flex-none min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
-          >
-            <Link
-              className="relative h-full w-full"
-              href={`/product/${product.handle}`}
-              prefetch={true}
-            >
-              <GridTileImage
-                alt={product.title}
-                label={{
-                  title: product.title,
-                  amount: product.priceRange.maxVariantPrice.amount,
-                  currencyCode: product.priceRange.maxVariantPrice.currencyCode,
-                }}
-                src={product.featuredImage?.url}
-                fill
-                sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
-              />
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

@@ -1,52 +1,6 @@
+import { ReserveButton } from "components/marketing/reserve-button";
+import { products } from "lib/products";
 import Link from "next/link";
-
-type Tier = {
-  handle: string;
-  name: string;
-  badge?: string;
-  price: string;
-  unit: string;
-  perks: string[];
-  highlighted?: boolean;
-};
-
-const tiers: Tier[] = [
-  {
-    handle: "wellness-boxer-single",
-    name: "The Single",
-    price: "$48",
-    unit: "one pair",
-    perks: [
-      "Desert Cool white",
-      "Roica\u2122 V550 + 95% organic cotton",
-      "Free returns within 30 days",
-    ],
-  },
-  {
-    handle: "wellness-boxer-3-pack",
-    name: "The 3-Pack",
-    badge: "Recommended",
-    price: "$128",
-    unit: "three pairs",
-    perks: [
-      "Save 11% vs. single pricing",
-      "Priority September fulfilment",
-      "Includes washable mesh laundry bag",
-    ],
-    highlighted: true,
-  },
-  {
-    handle: "wellness-boxer-subscribe",
-    name: "Subscribe & Replace",
-    price: "$108",
-    unit: "every 90 days",
-    perks: [
-      "Save 15% on every shipment",
-      "Skip, pause, or cancel anytime",
-      "First shipment ships at launch",
-    ],
-  },
-];
 
 export function SubscriptionBundles() {
   return (
@@ -63,14 +17,15 @@ export function SubscriptionBundles() {
             Three ways to onboard your microclimate.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-ink-700">
-            Reservations are charged at fulfilment in September 2026. Cancel
-            anytime before shipping. Subscriptions ship from launch and renew
-            quarterly.
+            Reservations are taken securely through Stripe. Cancel any time
+            before September 2026 fulfilment for a full refund. Subscriptions
+            ship from launch and renew on a 90-day cadence; pause or cancel
+            from your billing portal anytime.
           </p>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {tiers.map((t) => (
+          {products.map((t) => (
             <article
               key={t.handle}
               className={[
@@ -94,11 +49,11 @@ export function SubscriptionBundles() {
               </div>
 
               <div className="mt-6 flex items-baseline gap-3">
-                <span className="font-display text-5xl">{t.price}</span>
+                <span className="font-display text-5xl">{t.displayPrice}</span>
                 <span
                   className={`text-sm ${t.highlighted ? "text-sand-100/80" : "text-ink-700"}`}
                 >
-                  / {t.unit}
+                  / {t.displayUnit}
                 </span>
               </div>
 
@@ -115,28 +70,34 @@ export function SubscriptionBundles() {
                 ))}
               </ul>
 
-              <Link
-                href={`/product/${t.handle}`}
-                prefetch={true}
-                className={[
-                  "mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition",
-                  t.highlighted
-                    ? "bg-sand-50 text-sage-900 hover:bg-sand-100"
-                    : "bg-sage-800 text-sand-50 hover:bg-sage-900",
-                ].join(" ")}
+              <div className="mt-8">
+                <ReserveButton
+                  handle={t.handle}
+                  label={`Reserve ${t.name}`}
+                  variant={t.highlighted ? "inverse" : "primary"}
+                  block
+                />
+              </div>
+
+              <p
+                className={`mt-4 text-xs leading-relaxed ${t.highlighted ? "text-sand-100/70" : "text-sage-700"}`}
               >
-                Reserve {t.name}
-              </Link>
+                <Link
+                  href={`/product/${t.handle}`}
+                  className="underline-offset-4 hover:underline"
+                >
+                  See the full {t.name} details &rarr;
+                </Link>
+              </p>
             </article>
           ))}
         </div>
 
         <p className="mt-8 max-w-3xl text-xs leading-relaxed text-sage-700">
-          Pricing reflects launch reservation. Final retail will be confirmed
-          ahead of fulfilment. Subscription requires Shopify Subscriptions to
-          be enabled in the connected store; in the meantime,
-          &ldquo;Subscribe&rdquo; reservations are recorded as a single
-          launch shipment with a follow-up email to opt-in.
+          Pricing is set in Stripe and may be adjusted ahead of fulfilment.
+          The Subscribe &amp; Replace tier requires Stripe Billing to be
+          configured; until launch you may also opt-in by reserving a 3-Pack
+          and contacting us to convert.
         </p>
       </div>
     </section>

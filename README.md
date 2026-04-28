@@ -2,16 +2,31 @@
 
 The marketing + commerce frontend for [wellnessboxer.com](https://www.wellnessboxer.com).
 
-Built on the [vercel/commerce](https://github.com/vercel/commerce) Next.js 15 + Tailwind v4 + headless Shopify template, customised into a "Digital Sanctuary" brand experience for the September 2026 launch.
+Built on Next.js 15 (App Router, Tailwind v4) with **Stripe Checkout** as the entire commerce backend. Designed to run with **$0 fixed monthly cost** &mdash; you pay Stripe processing fees only when a customer actually checks out.
 
 ## Stack
 
 - **Framework:** Next.js 15 (App Router, Turbopack, PPR)
-- **Styling:** Tailwind v4 with a custom sage / sand / glacier palette
+- **Styling:** Tailwind v4 with a custom sage / sand / glacier "Digital Sanctuary" palette
 - **Type:** TypeScript 5.8
-- **Backend:** Headless Shopify Storefront API (lights up once env vars are set)
-- **Hosting:** Vercel (deploy via `scripts/deploy.sh`)
+- **Commerce:** Stripe Checkout (one-time + subscriptions) via the [stripe-node](https://github.com/stripe/stripe-node) SDK; static product catalog in [`lib/products.ts`](lib/products.ts).
+- **Hosting:** Vercel Hobby (free tier, deploy via [`scripts/deploy.sh`](scripts/deploy.sh))
 - **Package manager:** `pnpm`
+
+There is **no Shopify, no Medusa, no separate API server, and no managed database**. The Next.js app is the entire stack.
+
+## Cost model
+
+| Item | Cost |
+| ---- | ---- |
+| Stripe account | $0/month |
+| Stripe Checkout (one-time) | ~2.9% + 30&cent; per successful charge in the US |
+| Stripe Billing (subscriptions) | additional 0.5% per recurring charge |
+| Stripe Tax (optional) | 0.5% per calculated transaction |
+| Vercel Hobby | $0/month within Hobby limits |
+| Domain | what your registrar charges (annual) |
+
+**Total fixed monthly cost: $0.**
 
 ## Quick start
 
@@ -20,7 +35,7 @@ pnpm install
 pnpm dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000). The site renders fully without a connected Shopify store; commerce features (cart, checkout, product detail) activate automatically once you set the env vars below.
+Visit [http://localhost:3000](http://localhost:3000). The marketing site renders fully without Stripe configured; `Reserve` buttons return a friendly 503 from `/api/checkout` until you set the env vars below.
 
 ## Environment variables
 
@@ -29,12 +44,17 @@ Copy `.env.example` to `.env.local` and fill in:
 ```bash
 COMPANY_NAME="Wellness Boxer"
 SITE_NAME="Wellness Boxer"
-SHOPIFY_STORE_DOMAIN="wellnessboxer.myshopify.com"
-SHOPIFY_STOREFRONT_ACCESS_TOKEN="..."
-SHOPIFY_REVALIDATION_SECRET="..."
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+
+STRIPE_SECRET_KEY="sk_test_..."
+STRIPE_WEBHOOK_SECRET="whsec_..."
+
+STRIPE_PRICE_SINGLE="price_..."
+STRIPE_PRICE_3PACK="price_..."
+STRIPE_PRICE_SUBSCRIBE="price_..."
 ```
 
-See [docs/SHOPIFY_SETUP.md](docs/SHOPIFY_SETUP.md) for the full click-path to obtain the Storefront token.
+See [docs/STRIPE_SETUP.md](docs/STRIPE_SETUP.md) for the click-by-click flow to obtain every value.
 
 ## Deploy
 
@@ -44,33 +64,36 @@ When you are ready to attach `wellnessboxer.com`:
 ./scripts/deploy.sh
 ```
 
-The script installs the Vercel CLI, opens browser auth, links the project, prompts for env vars, attaches the domain, and ships a production build.
+The script installs the Vercel CLI, opens browser auth, links the project, prompts for the seven env vars, attaches the domain, and ships a production build.
 
 ## Project layout
 
 ```
 app/
-  page.tsx                    # marketing homepage (bento layout)
-  layout.tsx                  # root layout, fonts, cart provider
-  globals.css                 # Tailwind v4 theme tokens
-  api/waitlist/route.ts       # email capture (stub)
-  science/                    # research page
-  materials/                  # material traceability page
-  about/                      # brand + Barcelos manufacturing
-  legal/                      # privacy, terms, disclaimer (DRAFT)
-  product/[handle]/           # Shopify-driven product detail
-  search/                     # Shopify-driven search + collection pages
+  page.tsx                       # marketing homepage (bento layout)
+  layout.tsx                     # root layout, fonts, navbar
+  globals.css                    # Tailwind v4 theme tokens
+  api/
+    checkout/route.ts            # creates a Stripe Checkout Session
+    stripe/webhook/route.ts      # signature-verified webhook handler
+    waitlist/route.ts            # email capture stub
+  product/[handle]/page.tsx      # static product detail (Stripe-aware)
+  checkout/success/page.tsx      # post-payment landing
+  checkout/cancel/page.tsx       # cancelled-payment landing
+  science/                       # research page
+  materials/                     # material traceability page
+  about/                         # brand + Barcelos manufacturing
+  legal/                         # privacy, terms, disclaimer (DRAFT)
 components/
-  marketing/                  # Wellness Boxer marketing modules
-  layout/                     # navbar, footer, waitlist form
-  cart/                       # Shopify cart UI
-  ...
+  marketing/                     # Wellness Boxer marketing modules
+  layout/                        # navbar, mobile menu, footer, waitlist form
 lib/
-  shopify/                    # Storefront API client (resilient to missing env)
-  utils.ts                    # baseUrl, isShopifyConfigured, validators
-public/images/                # 9 product / lifestyle / diagram assets
-docs/SHOPIFY_SETUP.md         # store creation + token guide
-scripts/deploy.sh             # one-command Vercel deploy
+  products.ts                    # static product catalog (3 SKUs)
+  stripe.ts                      # lazy Stripe client singleton
+  utils.ts                       # baseUrl, URL helpers
+public/images/                   # 9 product / lifestyle / diagram assets
+docs/STRIPE_SETUP.md             # Stripe account + product creation guide
+scripts/deploy.sh                # one-command Vercel deploy
 ```
 
 ## Compliance
