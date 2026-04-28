@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -66,9 +67,18 @@ export default function MobileMenu({ menu }: { menu: NavItem[] }) {
           />
           <div className="absolute inset-y-0 left-0 flex w-[88%] max-w-sm flex-col bg-sand-50 p-6 shadow-sanctuary-lg">
             <div className="flex items-center justify-between">
-              <span className="font-display text-lg tracking-[0.2em] text-ink-900 uppercase">
-                Wellness <span className="text-sage-700">Boxer</span>
-              </span>
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/images/wellness-boxer-logo.png"
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="h-9 w-9 rounded-full ring-1 ring-sage-100"
+                />
+                <span className="font-display text-lg tracking-[0.2em] text-ink-900 uppercase">
+                  Wellness <span className="text-sage-700">Boxer</span>
+                </span>
+              </div>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
@@ -21,13 +22,21 @@ export function Navbar() {
           </Suspense>
         </div>
         <div className="flex w-full items-center">
-          <div className="flex w-full md:w-1/2">
+          <div className="flex w-full items-center md:w-1/2">
             <Link
               href="/"
               prefetch={true}
-              className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-8"
+              className="mr-2 flex w-full items-center justify-center gap-3 md:w-auto lg:mr-8"
               aria-label="Wellness Boxer home"
             >
+              <Image
+                src="/images/wellness-boxer-logo.png"
+                alt=""
+                width={40}
+                height={40}
+                priority
+                className="h-9 w-9 rounded-full ring-1 ring-sage-100"
+              />
               <span className="font-display text-lg tracking-[0.2em] text-ink-900 uppercase md:text-xl">
                 Wellness <span className="text-sage-700">Boxer</span>
               </span>

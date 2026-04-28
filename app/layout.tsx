@@ -37,6 +37,21 @@ export const metadata = {
     description:
       "Pelvic wellness, engineered. The Triple Zero Standard boxer with a clinically-informed cooling pouch.",
     siteName: "Wellness Boxer",
+    images: [
+      {
+        url: "/images/wellness-boxer-logo.png",
+        width: 1024,
+        height: 1024,
+        alt: "Wellness Boxer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wellness Boxer",
+    description:
+      "Pelvic wellness, engineered. The Triple Zero Standard boxer.",
+    images: ["/images/wellness-boxer-logo.png"],
   },
 };
 

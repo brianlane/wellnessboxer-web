@@ -1,4 +1,5 @@
 import { WaitlistForm } from "components/layout/waitlist-form";
+import Image from "next/image";
 import Link from "next/link";
 
 const certs = [
@@ -53,8 +54,17 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <div className="font-display text-2xl tracking-[0.2em] text-sand-50 uppercase">
-              Wellness <span className="text-sage-300">Boxer</span>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/wellness-boxer-logo.png"
+                alt=""
+                width={48}
+                height={48}
+                className="h-11 w-11 rounded-full bg-sand-50/95 p-0.5 ring-1 ring-sage-700"
+              />
+              <span className="font-display text-2xl tracking-[0.2em] text-sand-50 uppercase">
+                Wellness <span className="text-sage-300">Boxer</span>
+              </span>
             </div>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-sand-100/85">
               Reservations open for the September 2026 drop. Join the list

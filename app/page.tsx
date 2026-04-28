@@ -17,13 +17,22 @@ export const metadata = {
 };
 
 export default function HomePage() {
+  const organizationLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Wellness Boxer",
+    url: "https://www.wellnessboxer.com",
+    logo: "https://www.wellnessboxer.com/images/wellness-boxer-logo.png",
+    sameAs: [],
+  };
+
   const productLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "Wellness Boxer",
     description:
       "The Triple Zero Standard boxer with a 3D-engineered overlap fly, skin-safe tunnel waistband, and Roica V550 biodegradable stretch in 95% organic cotton poplin.",
-    brand: { "@type": "Brand", name: "Wellness Boxer" },
+    brand: { "@type": "Brand", name: "Wellness Boxer", logo: "https://www.wellnessboxer.com/images/wellness-boxer-logo.png" },
     image: "/images/airflow-channels.png",
     countryOfOrigin: "PT",
     material: "95% Organic Cotton, 5% Roica\u2122 V550 elastane",
@@ -31,6 +40,10 @@ export default function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }}
