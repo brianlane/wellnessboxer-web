@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/container-queries";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-sage-50: #f4f7f2;
+  --color-sage-100: #e6ede0;
+  --color-sage-200: #cdd9c2;
+  --color-sage-300: #aabe9b;
+  --color-sage-400: #8fa57e;
+  --color-sage-500: #7a8e6f;
+  --color-sage-600: #5f7257;
+  --color-sage-700: #475643;
+  --color-sage-800: #344034;
+  --color-sage-900: #2e3a2a;
+
+  --color-sand-50: #faf6f0;
+  --color-sand-100: #f3ebdd;
+  --color-sand-200: #e7d6b9;
+  --color-sand-300: #d8c19a;
+  --color-sand-400: #c9b89a;
+  --color-sand-500: #b69e7a;
+  --color-sand-600: #8e7956;
+  --color-sand-700: #6e4e3a;
+
+  --color-clay-500: #a87a5b;
+  --color-clay-700: #6e4e3a;
+
+  --color-ink-700: #4a4d4b;
+  --color-ink-800: #2a2d2c;
+  --color-ink-900: #1a1d1c;
+
+  --color-glacier-100: #e3eef4;
+  --color-glacier-300: #a6cadb;
+  --color-glacier-500: #6da6c2;
+  --color-glacier-700: #3e6b81;
+
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-display:
+    var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-sage-100, currentColor);
+  }
+
+  html {
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-sand-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background-color: var(--color-sage-200);
+    color: var(--color-sage-900);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+}
+
+@utility shadow-sanctuary {
+  box-shadow: 0 1px 40px -8px rgba(46, 58, 42, 0.08);
+}
+
+@utility shadow-sanctuary-lg {
+  box-shadow: 0 30px 80px -30px rgba(46, 58, 42, 0.18);
+}
+
+a,
+input,
+button {
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-sage-500 focus-visible:ring-offset-2 focus-visible:ring-offset-sand-50;
+}
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading="lazy"] {
+    clip-path: inset(0.6px);
+  }
+}
