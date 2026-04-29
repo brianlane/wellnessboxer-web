@@ -52,13 +52,13 @@ export function CraftedInBarcelos() {
         </div>
 
         <div className="md:col-span-7 lg:col-span-7">
-          <div className="shadow-sanctuary-lg relative aspect-[16/10] w-full overflow-hidden rounded-3xl ring-1 ring-sage-700">
+          <div className="shadow-sanctuary-lg relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-sage-800 ring-1 ring-sage-700 md:aspect-[16/10]">
             <Image
               src="/images/barcelos-factory.png"
               alt="High-precision seam at the Barcelos textile hub, Portugal"
               fill
               sizes="(min-width: 1024px) 720px, 100vw"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
         </div>

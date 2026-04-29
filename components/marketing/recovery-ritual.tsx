@@ -20,13 +20,13 @@ export function RecoveryRitual() {
     <section className="bg-sand-50 py-20 md:py-28 lg:py-32">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 lg:gap-12 lg:px-10">
         <div className="md:col-span-7 lg:col-span-7">
-          <div className="shadow-sanctuary-lg relative aspect-[16/10] w-full overflow-hidden rounded-3xl ring-1 ring-sage-100">
+          <div className="shadow-sanctuary-lg relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-ink-900 ring-1 ring-sage-100 md:aspect-[16/10]">
             <Image
               src="/images/recovery-locker.png"
               alt="Active recovery: optimize testicular cooling post-performance"
               fill
               sizes="(min-width: 1024px) 720px, 100vw"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
         </div>
