@@ -17,14 +17,14 @@ There is **no Shopify, no Medusa, no separate API server, and no managed databas
 
 ## Cost model
 
-| Item | Cost |
-| ---- | ---- |
-| Stripe account | $0/month |
-| Stripe Checkout (one-time) | ~2.9% + 30&cent; per successful charge in the US |
-| Stripe Billing (subscriptions) | additional 0.5% per recurring charge |
-| Stripe Tax (optional) | 0.5% per calculated transaction |
-| Vercel Hobby | $0/month within Hobby limits |
-| Domain | what your registrar charges (annual) |
+| Item                           | Cost                                             |
+| ------------------------------ | ------------------------------------------------ |
+| Stripe account                 | $0/month                                         |
+| Stripe Checkout (one-time)     | ~2.9% + 30&cent; per successful charge in the US |
+| Stripe Billing (subscriptions) | additional 0.5% per recurring charge             |
+| Stripe Tax (optional)          | 0.5% per calculated transaction                  |
+| Vercel Hobby                   | $0/month within Hobby limits                     |
+| Domain                         | what your registrar charges (annual)             |
 
 **Total fixed monthly cost: $0.**
 
@@ -55,6 +55,17 @@ STRIPE_PRICE_SUBSCRIBE="price_..."
 ```
 
 See [docs/STRIPE_SETUP.md](docs/STRIPE_SETUP.md) for the click-by-click flow to obtain every value.
+
+## Tests
+
+```bash
+pnpm test           # one-shot run with Vitest
+pnpm test:watch     # interactive watch mode
+pnpm test:coverage  # v8 coverage; thresholds enforced at 100%
+pnpm test:ci        # prettier:check + vitest run + coverage thresholds
+```
+
+The suite uses Vitest with a `jsdom` environment and React Testing Library. Coverage is enforced at 100% statements / branches / functions / lines for everything under `app/`, `components/`, and `lib/`. Mocks for `next/font/google` and `next/image` live in [`tests/setup.tsx`](tests/setup.tsx).
 
 ## Deploy
 
@@ -94,6 +105,8 @@ lib/
 public/images/                   # 9 product / lifestyle / diagram assets
 docs/STRIPE_SETUP.md             # Stripe account + product creation guide
 scripts/deploy.sh                # one-command Vercel deploy
+tests/                           # vitest suite (100% coverage)
+vitest.config.ts                 # jsdom + v8 coverage config
 ```
 
 ## Compliance
