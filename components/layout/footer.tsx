@@ -9,13 +9,19 @@ const certs = [
   "GOTS-eligible cotton",
 ];
 
-const navColumns: Array<{ heading: string; links: Array<{ label: string; href: string }> }> = [
+const navColumns: Array<{
+  heading: string;
+  links: Array<{ label: string; href: string }>;
+}> = [
   {
     heading: "Shop",
     links: [
       { label: "The 3-Pack", href: "/product/wellness-boxer-3-pack" },
       { label: "Single Pair", href: "/product/wellness-boxer-single" },
-      { label: "Subscribe & Replace", href: "/product/wellness-boxer-subscribe" },
+      {
+        label: "Subscribe & Replace",
+        href: "/product/wellness-boxer-subscribe",
+      },
       { label: "Reservations FAQ", href: "/about#faq" },
     ],
   },
@@ -67,9 +73,9 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-sand-100/85">
-              Reservations open for the September 2026 drop. Join the list
-              for production updates, limited Desert Cool restocks, and
-              Roica&trade; V550 bio-stretch certifications as they finalise.
+              Reservations open for the September 2026 drop. Join the list for
+              production updates, limited Desert Cool restocks, and Roica&trade;
+              V550 bio-stretch certifications as they finalise.
             </p>
             <WaitlistForm />
           </div>
@@ -118,14 +124,16 @@ export default function Footer() {
 
         <div className="mt-10 rounded-2xl border border-sage-700 bg-sage-800/60 p-6 text-xs leading-relaxed text-sand-100/85">
           <p>
-            <span className="font-medium text-sand-50">Medical disclaimer.</span>{" "}
-            These statements have not been evaluated by the U.S. Food and
-            Drug Administration. The Wellness Boxer is apparel and is not
-            intended to diagnose, treat, cure, or prevent any disease,
-            including infertility. Consult a qualified physician before
-            making changes to your reproductive health regimen. Cited
-            research is shared for educational context and does not
-            constitute a clinical claim about this product.
+            <span className="font-medium text-sand-50">
+              Medical disclaimer.
+            </span>{" "}
+            These statements have not been evaluated by the U.S. Food and Drug
+            Administration. The Wellness Boxer is apparel and is not intended to
+            diagnose, treat, cure, or prevent any disease, including
+            infertility. Consult a qualified physician before making changes to
+            your reproductive health regimen. Cited research is shared for
+            educational context and does not constitute a clinical claim about
+            this product.
           </p>
           <p className="mt-3">
             Roica&trade; is a trademark of Asahi Kasei Corporation.
@@ -134,12 +142,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-sage-700 pt-6 text-xs text-sand-100/70 md:flex-row md:items-center">
-          <p>
-            &copy; {currentYear} Wellness Boxer. All rights reserved.
-          </p>
-          <p>
-            Crafted in Barcelos, Portugal &middot; Distributed globally
-          </p>
+          <p>&copy; {currentYear} Wellness Boxer. All rights reserved.</p>
+          <p>Crafted in Barcelos, Portugal &middot; Distributed globally</p>
         </div>
       </div>
     </footer>

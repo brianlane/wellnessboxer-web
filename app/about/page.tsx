@@ -27,18 +27,18 @@ export default function AboutPage() {
         </ol>
         <p>
           So we built one. The Triple Zero Standard is the engineering
-          specification we wrote for ourselves, and the only one this
-          company is allowed to sell against.
+          specification we wrote for ourselves, and the only one this company is
+          allowed to sell against.
         </p>
 
         <h2 id="barcelos">Made in Barcelos</h2>
         <p>
           Northern Portugal &mdash; specifically the Barcelos / Vila Nova de
           Famalic&atilde;o textile corridor &mdash; is one of the densest
-          high-precision apparel ecosystems in Europe. Our cut-and-sew
-          partner runs SMETA 4-Pillar audits, pays above the regional
-          textile-industry collective bargaining floor, and shares unit-level
-          QC photography for every production run.
+          high-precision apparel ecosystems in Europe. Our cut-and-sew partner
+          runs SMETA 4-Pillar audits, pays above the regional textile-industry
+          collective bargaining floor, and shares unit-level QC photography for
+          every production run.
         </p>
 
         <h2>What you can expect from us</h2>
@@ -62,8 +62,8 @@ export default function AboutPage() {
         </p>
         <p>
           <strong>Do you ship internationally?</strong> US, Canada, EU
-          countries, UK, Australia, New Zealand, Japan, and Singapore at
-          launch. More markets after Q4 2026.
+          countries, UK, Australia, New Zealand, Japan, and Singapore at launch.
+          More markets after Q4 2026.
         </p>
       </PageShell>
       <Footer />

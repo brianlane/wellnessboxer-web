@@ -12,20 +12,23 @@ export async function POST(request: Request) {
         message:
           "Stripe is not yet configured for this site. See docs/STRIPE_SETUP.md.",
       },
-      { status: 503 }
+      { status: 503 },
     );
   }
 
   let handle: string | undefined;
   let quantity = 1;
   try {
-    const body = (await request.json()) as { handle?: string; quantity?: number };
+    const body = (await request.json()) as {
+      handle?: string;
+      quantity?: number;
+    };
     handle = body.handle;
     quantity = Math.max(1, Math.min(10, Number(body.quantity ?? 1)));
   } catch {
     return NextResponse.json(
       { ok: false, error: "invalid_body" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -33,7 +36,7 @@ export async function POST(request: Request) {
   if (!product) {
     return NextResponse.json(
       { ok: false, error: "unknown_product", handle },
-      { status: 404 }
+      { status: 404 },
     );
   }
 
@@ -45,7 +48,7 @@ export async function POST(request: Request) {
         error: "missing_price",
         message: `${product.priceEnvKey} is not set. See docs/STRIPE_SETUP.md.`,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -108,7 +111,7 @@ export async function POST(request: Request) {
     console.error("[checkout] failed to create session", message);
     return NextResponse.json(
       { ok: false, error: "stripe_error", message },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

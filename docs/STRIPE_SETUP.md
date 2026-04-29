@@ -21,22 +21,23 @@ This document is the click-by-click setup. Run it once before `scripts/deploy.sh
 
 For each product below, create it under <https://dashboard.stripe.com/products>:
 
-| Product name           | Pricing model                | Price (USD) | Statement descriptor |
-| ---------------------- | ---------------------------- | ----------- | -------------------- |
-| Wellness Boxer Single  | One time                     | $48.00      | WELLNESS BOXER       |
-| Wellness Boxer 3-Pack  | One time                     | $128.00     | WELLNESS BOXER       |
-| Wellness Boxer Subscribe & Replace | Recurring &mdash; every 90 days | $108.00 | WELLNESS BOXER SUB |
+| Product name                       | Pricing model                   | Price (USD) | Statement descriptor |
+| ---------------------------------- | ------------------------------- | ----------- | -------------------- |
+| Wellness Boxer Single              | One time                        | $48.00      | WELLNESS BOXER       |
+| Wellness Boxer 3-Pack              | One time                        | $128.00     | WELLNESS BOXER       |
+| Wellness Boxer Subscribe & Replace | Recurring &mdash; every 90 days | $108.00     | WELLNESS BOXER SUB   |
 
 For the subscription product, set:
+
 - Billing period: `Custom` &rarr; every `3` months (90 days)
 - Usage type: `Licensed`
 
 After saving each product, copy the generated **Price ID** (looks like `price_1Pabc...`). You'll set them as env vars:
 
-| Stripe Price ID belongs to | Env var |
-| --- | --- |
-| Wellness Boxer Single | `STRIPE_PRICE_SINGLE` |
-| Wellness Boxer 3-Pack | `STRIPE_PRICE_3PACK` |
+| Stripe Price ID belongs to             | Env var                  |
+| -------------------------------------- | ------------------------ |
+| Wellness Boxer Single                  | `STRIPE_PRICE_SINGLE`    |
+| Wellness Boxer 3-Pack                  | `STRIPE_PRICE_3PACK`     |
 | Wellness Boxer Subscribe &amp; Replace | `STRIPE_PRICE_SUBSCRIBE` |
 
 ## 4. Enable Stripe Tax (recommended, optional)
@@ -102,13 +103,13 @@ When you flip Stripe to live mode:
 
 ## Cost summary
 
-| Item | Cost |
-| ---- | ---- |
-| Stripe account | $0/month |
-| Stripe Checkout | $0/month, ~2.9% + 30&cent; per successful charge |
+| Item                           | Cost                                                               |
+| ------------------------------ | ------------------------------------------------------------------ |
+| Stripe account                 | $0/month                                                           |
+| Stripe Checkout                | $0/month, ~2.9% + 30&cent; per successful charge                   |
 | Stripe Billing (subscriptions) | $0/month, additional 0.5% per recurring charge above standard fees |
-| Stripe Tax | 0.5% per Stripe Tax-calculated transaction |
-| Vercel Hobby | $0/month within Hobby limits |
-| Domain | Whatever you pay your registrar |
+| Stripe Tax                     | 0.5% per Stripe Tax-calculated transaction                         |
+| Vercel Hobby                   | $0/month within Hobby limits                                       |
+| Domain                         | Whatever you pay your registrar                                    |
 
 **Total fixed monthly cost: $0.** All transaction fees are taken out of the customer payment, not billed to you separately.

@@ -11,15 +11,17 @@ export function HeroMicroclimate() {
           </p>
           <h1 className="font-display mt-6 text-4xl leading-[1.05] text-ink-900 sm:text-5xl lg:text-6xl">
             The boxer designed
-            <span className="block text-sage-700">around your microclimate.</span>
+            <span className="block text-sage-700">
+              around your microclimate.
+            </span>
           </h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-ink-700 lg:text-lg">
             A 3D-engineered overlap fly. A skin-safe tunnel waistband. Roica
-            <span className="align-super text-[0.6em]">&trade;</span>{" "}
-            V550 biodegradable stretch in 95% organic cotton poplin. Built to
-            keep you cooler{" "}
-            <span className="font-medium text-ink-900">by 0.7&deg;C</span>{" "}
-            where it matters.
+            <span className="align-super text-[0.6em]">&trade;</span> V550
+            biodegradable stretch in 95% organic cotton poplin. Built to keep
+            you cooler{" "}
+            <span className="font-medium text-ink-900">by 0.7&deg;C</span> where
+            it matters.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link

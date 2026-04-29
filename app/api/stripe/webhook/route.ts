@@ -3,18 +3,27 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   if (!isStripeConfigured()) {
-    return NextResponse.json({ ok: false, error: "stripe_not_configured" }, { status: 503 });
+    return NextResponse.json(
+      { ok: false, error: "stripe_not_configured" },
+      { status: 503 },
+    );
   }
 
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!secret) {
     console.error("[stripe-webhook] STRIPE_WEBHOOK_SECRET is not set");
-    return NextResponse.json({ ok: false, error: "webhook_secret_missing" }, { status: 500 });
+    return NextResponse.json(
+      { ok: false, error: "webhook_secret_missing" },
+      { status: 500 },
+    );
   }
 
   const signature = request.headers.get("stripe-signature");
   if (!signature) {
-    return NextResponse.json({ ok: false, error: "no_signature" }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "no_signature" },
+      { status: 400 },
+    );
   }
 
   const stripe = getStripe();
@@ -26,7 +35,10 @@ export async function POST(request: Request) {
   } catch (err) {
     const message = err instanceof Error ? err.message : "unknown";
     console.error("[stripe-webhook] signature verification failed", message);
-    return NextResponse.json({ ok: false, error: "bad_signature" }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "bad_signature" },
+      { status: 400 },
+    );
   }
 
   switch (event.type) {

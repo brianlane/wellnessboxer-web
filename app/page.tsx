@@ -32,7 +32,11 @@ export default function HomePage() {
     name: "Wellness Boxer",
     description:
       "The Triple Zero Standard boxer with a 3D-engineered overlap fly, skin-safe tunnel waistband, and Roica V550 biodegradable stretch in 95% organic cotton poplin.",
-    brand: { "@type": "Brand", name: "Wellness Boxer", logo: "https://www.wellnessboxer.com/images/wellness-boxer-logo.png" },
+    brand: {
+      "@type": "Brand",
+      name: "Wellness Boxer",
+      logo: "https://www.wellnessboxer.com/images/wellness-boxer-logo.png",
+    },
     image: "/images/airflow-channels.png",
     countryOfOrigin: "PT",
     material: "95% Organic Cotton, 5% Roica\u2122 V550 elastane",

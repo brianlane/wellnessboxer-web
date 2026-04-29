@@ -5,10 +5,8 @@ import { useState, useTransition } from "react";
 type Variant = "primary" | "inverse" | "outline";
 
 const STYLES: Record<Variant, string> = {
-  primary:
-    "bg-sage-800 text-sand-50 hover:bg-sage-900",
-  inverse:
-    "bg-sand-50 text-sage-900 hover:bg-sand-100",
+  primary: "bg-sage-800 text-sand-50 hover:bg-sage-900",
+  inverse: "bg-sand-50 text-sage-900 hover:bg-sand-100",
   outline:
     "border border-sage-300 bg-transparent text-sage-900 hover:bg-sage-100",
 };
@@ -51,12 +49,14 @@ export function ReserveButton({
                 throw new Error(
                   data.message ||
                     data.error ||
-                    "Checkout is not ready yet. Please try again shortly."
+                    "Checkout is not ready yet. Please try again shortly.",
                 );
               }
               window.location.assign(data.url);
             } catch (err) {
-              setError(err instanceof Error ? err.message : "Something went wrong.");
+              setError(
+                err instanceof Error ? err.message : "Something went wrong.",
+              );
             }
           })
         }

@@ -6,12 +6,18 @@ export async function POST(request: Request) {
     const body = (await request.json()) as { email?: string };
     email = (body.email ?? "").trim();
   } catch {
-    return NextResponse.json({ ok: false, error: "invalid_body" }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "invalid_body" },
+      { status: 400 },
+    );
   }
 
   const looksValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!looksValid) {
-    return NextResponse.json({ ok: false, error: "invalid_email" }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "invalid_email" },
+      { status: 400 },
+    );
   }
 
   // TODO: wire to Resend / Klaviyo / Shopify Customer API at

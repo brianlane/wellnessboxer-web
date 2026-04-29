@@ -33,9 +33,9 @@ export function MaterialsTraceability() {
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-ink-700">
                 The Roica&trade; V550 elastic core runs inside a fabric-encased
-                tunnel of organic cotton. There is no rubber, no logo print,
-                and no synthetic surface against your skin &mdash; even where
-                the band sits all day.
+                tunnel of organic cotton. There is no rubber, no logo print, and
+                no synthetic surface against your skin &mdash; even where the
+                band sits all day.
               </p>
               <ul className="mt-5 space-y-2 text-sm text-ink-700">
                 <li className="flex gap-3">
@@ -79,8 +79,8 @@ export function MaterialsTraceability() {
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-ink-700">
                 A 95% organic cotton crisp poplin paired with 5% Roica&trade;
-                V550 elastane. The structured weave creates the airflow
-                channels you saw above, without the cling of jersey.
+                V550 elastane. The structured weave creates the airflow channels
+                you saw above, without the cling of jersey.
               </p>
               <ul className="mt-5 space-y-2 text-sm text-ink-700">
                 <li className="flex gap-3">

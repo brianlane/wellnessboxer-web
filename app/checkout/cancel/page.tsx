@@ -29,8 +29,8 @@ export default async function CheckoutCancelPage({
             No reservation has been placed.
           </h1>
           <p className="mt-6 text-base leading-relaxed text-ink-700">
-            We didn&rsquo;t take any payment and didn&rsquo;t save your
-            details. If something went wrong with checkout, write us at{" "}
+            We didn&rsquo;t take any payment and didn&rsquo;t save your details.
+            If something went wrong with checkout, write us at{" "}
             <a
               href="mailto:hello@wellnessboxer.com"
               className="text-sage-700 underline-offset-4 hover:underline"

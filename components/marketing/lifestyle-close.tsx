@@ -24,9 +24,9 @@ export function LifestyleClose() {
             <span className="block text-sand-200">Earned for any climate.</span>
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-sand-100/90">
-            We tested in the conditions that make conventional underwear
-            fail: high heat, low humidity, long sit-time. The Wellness Boxer
-            kept its airflow and kept its shape.
+            We tested in the conditions that make conventional underwear fail:
+            high heat, low humidity, long sit-time. The Wellness Boxer kept its
+            airflow and kept its shape.
           </p>
         </div>
       </div>

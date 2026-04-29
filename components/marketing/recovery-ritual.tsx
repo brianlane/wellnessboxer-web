@@ -39,9 +39,9 @@ export function RecoveryRitual() {
             When to wear loose. When to wear tight.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-ink-700">
-            Compression is a tool. So is airflow. Both have a place &mdash;
-            but they are not interchangeable, and most men spend 90%+ of their
-            day in the wrong one.
+            Compression is a tool. So is airflow. Both have a place &mdash; but
+            they are not interchangeable, and most men spend 90%+ of their day
+            in the wrong one.
           </p>
 
           <div className="mt-8 space-y-4">

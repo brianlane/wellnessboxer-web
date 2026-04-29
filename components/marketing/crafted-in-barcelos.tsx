@@ -15,8 +15,8 @@ export function CraftedInBarcelos() {
             Each pair is cut and sewn in our Porto-area facility on the same
             high-precision lines used by leading European wellness apparel
             brands. Roica&trade; V550 bio-stretch is integrated through a
-            documented seam protocol &mdash; no logo print, no plastic tags,
-            no animal-derived adhesives.
+            documented seam protocol &mdash; no logo print, no plastic tags, no
+            animal-derived adhesives.
           </p>
 
           <dl className="mt-10 grid grid-cols-2 gap-6">

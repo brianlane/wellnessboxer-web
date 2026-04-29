@@ -26,16 +26,17 @@ export default async function CheckoutSuccessPage({
             You&rsquo;re on the September 2026 launch list.
           </h1>
           <p className="mt-6 text-base leading-relaxed text-ink-700">
-            Stripe has received your reservation and emailed you a receipt.
-            We will email you with production updates and your fulfilment
-            window in the weeks leading up to launch. If you reserved a
-            subscription, you can manage it any time from the billing portal
-            link in your receipt email.
+            Stripe has received your reservation and emailed you a receipt. We
+            will email you with production updates and your fulfilment window in
+            the weeks leading up to launch. If you reserved a subscription, you
+            can manage it any time from the billing portal link in your receipt
+            email.
           </p>
 
           {session_id ? (
             <p className="mt-6 text-xs tracking-wider text-sage-700 uppercase">
-              Reference: <span className="text-ink-700 normal-case">{session_id}</span>
+              Reference:{" "}
+              <span className="text-ink-700 normal-case">{session_id}</span>
             </p>
           ) : null}
 

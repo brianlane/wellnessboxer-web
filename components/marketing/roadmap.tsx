@@ -36,9 +36,9 @@ export function RoadmapToWellness() {
               Reserve now. Shipping September 2026.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-700">
-              We do not pre-mass-produce. Every reservation is committed
-              against an audited Portuguese production window. The 3-Pack
-              ships in the Desert Cool white colorway first.
+              We do not pre-mass-produce. Every reservation is committed against
+              an audited Portuguese production window. The 3-Pack ships in the
+              Desert Cool white colorway first.
             </p>
           </div>
           <div className="md:col-span-7 lg:col-span-7">

@@ -17,10 +17,10 @@ export default function MaterialsPage() {
       >
         <h2>95% organic cotton poplin</h2>
         <p>
-          Our base cloth is a crisp poplin: a structured plain weave that
-          holds its airflow channels even after dozens of wash cycles.
-          Cotton supply is sourced from GOTS-eligible cooperatives in Turkey
-          and Greece, traceable to the bale.
+          Our base cloth is a crisp poplin: a structured plain weave that holds
+          its airflow channels even after dozens of wash cycles. Cotton supply
+          is sourced from GOTS-eligible cooperatives in Turkey and Greece,
+          traceable to the bale.
         </p>
         <ul>
           <li>OEKO-TEX&reg; Standard 100 verified for skin-contact safety</li>
@@ -32,10 +32,9 @@ export default function MaterialsPage() {
         <p>
           Roica&trade; V550 is the first elastane verified by the Hohenstein
           Institute to biodegrade in marine and activated-sludge conditions
-          without releasing harmful substances. We use it sparingly &mdash;
-          only where stretch is mechanically required &mdash; and we route
-          it through a fabric-encased tunnel rather than letting it touch
-          skin.
+          without releasing harmful substances. We use it sparingly &mdash; only
+          where stretch is mechanically required &mdash; and we route it through
+          a fabric-encased tunnel rather than letting it touch skin.
         </p>
         <ul>
           <li>Marine biodegradation verified (Hohenstein, public protocol)</li>
@@ -45,11 +44,11 @@ export default function MaterialsPage() {
 
         <h2>The tunnel waistband</h2>
         <p>
-          A standard waistband is a slab of polyester or rubber printed with
-          a logo. Our waistband is a tunnel: an internal Roica&trade; V550
-          core encased in a sleeve of the same organic cotton that makes up
-          the body. There is no synthetic surface against your skin, even
-          where the band sits all day.
+          A standard waistband is a slab of polyester or rubber printed with a
+          logo. Our waistband is a tunnel: an internal Roica&trade; V550 core
+          encased in a sleeve of the same organic cotton that makes up the body.
+          There is no synthetic surface against your skin, even where the band
+          sits all day.
         </p>
 
         <h2>Things we do not use</h2>

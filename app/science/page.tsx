@@ -20,27 +20,32 @@ export default function SciencePage() {
           A 2018 Harvard School of Public Health analysis of 656 men recruited
           from a fertility clinic reported that men who wore loose boxers had
           ~25% higher sperm concentration than men who primarily wore tight,
-          polyester-heavy underwear. The relationship persisted after
-          adjustment for confounders.
+          polyester-heavy underwear. The relationship persisted after adjustment
+          for confounders.
         </p>
         <p>
-          <em>Reference: M&iacute;nguez-Alarc&oacute;n L. et al. &ldquo;Type of
-          underwear worn and markers of testicular function among men
-          attending a fertility center.&rdquo; <strong>Human Reproduction</strong>, 2018.</em>
+          <em>
+            Reference: M&iacute;nguez-Alarc&oacute;n L. et al. &ldquo;Type of
+            underwear worn and markers of testicular function among men
+            attending a fertility center.&rdquo;{" "}
+            <strong>Human Reproduction</strong>, 2018.
+          </em>
         </p>
 
         <h2>Polyester and the electrostatic case</h2>
         <p>
           Animal models have linked polyester underwear to localized
           electrostatic potentials at the scrotal surface and to functional
-          changes vs. cotton-clad and naked controls. The mechanism is
-          contested in humans, but the prudent design choice for a wellness
-          product is to remove the variable: 0% polyester at any
-          skin-contact surface.
+          changes vs. cotton-clad and naked controls. The mechanism is contested
+          in humans, but the prudent design choice for a wellness product is to
+          remove the variable: 0% polyester at any skin-contact surface.
         </p>
         <p>
-          <em>Reference: Shafik A. &ldquo;Effect of different types of textile
-          fabric on spermatogenesis.&rdquo; <strong>European Urology</strong>, 1993.</em>
+          <em>
+            Reference: Shafik A. &ldquo;Effect of different types of textile
+            fabric on spermatogenesis.&rdquo; <strong>European Urology</strong>,
+            1993.
+          </em>
         </p>
 
         <h2>The 0.7&deg;C cooling benefit</h2>
@@ -64,8 +69,8 @@ export default function SciencePage() {
             temperature and remove synthetic-fibre contact.
           </li>
           <li>
-            <strong>Is not:</strong> a medical device, a fertility treatment,
-            or a substitute for clinician-led care.
+            <strong>Is not:</strong> a medical device, a fertility treatment, or
+            a substitute for clinician-led care.
           </li>
         </ul>
 

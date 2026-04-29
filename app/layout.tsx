@@ -49,17 +49,12 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Wellness Boxer",
-    description:
-      "Pelvic wellness, engineered. The Triple Zero Standard boxer.",
+    description: "Pelvic wellness, engineered. The Triple Zero Standard boxer.",
     images: ["/images/wellness-boxer-logo.png"],
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"

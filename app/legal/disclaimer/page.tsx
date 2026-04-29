@@ -17,29 +17,28 @@ export default function DisclaimerPage() {
       >
         <h2>FDA statement</h2>
         <p>
-          These statements have not been evaluated by the U.S. Food and
-          Drug Administration. The Wellness Boxer is apparel and is not
-          intended to diagnose, treat, cure, or prevent any disease,
-          including infertility or any urological, endocrine, or
-          reproductive condition.
+          These statements have not been evaluated by the U.S. Food and Drug
+          Administration. The Wellness Boxer is apparel and is not intended to
+          diagnose, treat, cure, or prevent any disease, including infertility
+          or any urological, endocrine, or reproductive condition.
         </p>
 
         <h2>Educational use of cited research</h2>
         <p>
           Research cited on this site &mdash; including the
-          M&iacute;nguez-Alarc&oacute;n et al. (2018) loose-boxer paper,
-          Shafik (1993) on textile and spermatogenesis, and our internal
-          thermography &mdash; is shared for educational context. None of
-          this research was conducted on the Wellness Boxer specifically,
-          and none of it constitutes a clinical claim about outcomes that
-          consumers will personally experience.
+          M&iacute;nguez-Alarc&oacute;n et al. (2018) loose-boxer paper, Shafik
+          (1993) on textile and spermatogenesis, and our internal thermography
+          &mdash; is shared for educational context. None of this research was
+          conducted on the Wellness Boxer specifically, and none of it
+          constitutes a clinical claim about outcomes that consumers will
+          personally experience.
         </p>
 
         <h2>Consult your physician</h2>
         <p>
-          If you are experiencing fertility or reproductive-health
-          concerns, please consult a qualified physician. Apparel is not a
-          substitute for medical care.
+          If you are experiencing fertility or reproductive-health concerns,
+          please consult a qualified physician. Apparel is not a substitute for
+          medical care.
         </p>
 
         <h2>Trademarks and certifications</h2>

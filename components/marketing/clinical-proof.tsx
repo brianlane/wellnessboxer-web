@@ -36,10 +36,9 @@ export function ClinicalProof() {
             Designed against scrotal hyperthermia.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-ink-700">
-            Sustained heat above 35&deg;C disrupts spermatogenesis. The
-            Wellness Boxer was engineered to keep the inguinal microclimate
-            measurably below it &mdash; without compression and without
-            polyester.
+            Sustained heat above 35&deg;C disrupts spermatogenesis. The Wellness
+            Boxer was engineered to keep the inguinal microclimate measurably
+            below it &mdash; without compression and without polyester.
           </p>
         </div>
 
@@ -105,8 +104,8 @@ export function ClinicalProof() {
               </ul>
               <p className="mt-5 text-xs leading-relaxed text-sage-700">
                 This is engineering evidence of design intent. It is not a
-                randomised clinical trial and we do not extrapolate
-                fertility outcomes from it. See the{" "}
+                randomised clinical trial and we do not extrapolate fertility
+                outcomes from it. See the{" "}
                 <a
                   href="/science"
                   className="underline-offset-4 hover:underline"
@@ -149,8 +148,8 @@ export function ClinicalProof() {
         <p className="mt-10 max-w-3xl text-xs leading-relaxed text-sage-700">
           Cited literature is observational and shared for educational context.
           Wellness Boxer is apparel, not a medical device. Statements have not
-          been evaluated by the FDA. See full clinical references on the
-          Science page.
+          been evaluated by the FDA. See full clinical references on the Science
+          page.
         </p>
       </div>
     </section>

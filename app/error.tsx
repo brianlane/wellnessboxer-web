@@ -11,8 +11,8 @@ export default function Error({ reset }: { reset: () => void }) {
           We hit a snag.
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-ink-700">
-          This is likely temporary. Try the action again, or refresh the
-          page. If it keeps happening, write to{" "}
+          This is likely temporary. Try the action again, or refresh the page.
+          If it keeps happening, write to{" "}
           <a
             href="mailto:hello@wellnessboxer.com"
             className="text-sage-700 underline-offset-4 hover:underline"

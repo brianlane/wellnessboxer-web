@@ -4,10 +4,7 @@ import Link from "next/link";
 
 export function SubscriptionBundles() {
   return (
-    <section
-      id="bundles"
-      className="bg-sand-50 py-20 md:py-28 lg:py-32"
-    >
+    <section id="bundles" className="bg-sand-50 py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-2xl">
           <p className="text-xs font-medium tracking-[0.22em] text-sage-700 uppercase">
@@ -19,8 +16,8 @@ export function SubscriptionBundles() {
           <p className="mt-5 text-base leading-relaxed text-ink-700">
             Reservations are taken securely through Stripe. Cancel any time
             before September 2026 fulfilment for a full refund. Subscriptions
-            ship from launch and renew on a 90-day cadence; pause or cancel
-            from your billing portal anytime.
+            ship from launch and renew on a 90-day cadence; pause or cancel from
+            your billing portal anytime.
           </p>
         </div>
 
@@ -94,10 +91,10 @@ export function SubscriptionBundles() {
         </div>
 
         <p className="mt-8 max-w-3xl text-xs leading-relaxed text-sage-700">
-          Pricing is set in Stripe and may be adjusted ahead of fulfilment.
-          The Subscribe &amp; Replace tier requires Stripe Billing to be
-          configured; until launch you may also opt-in by reserving a 3-Pack
-          and contacting us to convert.
+          Pricing is set in Stripe and may be adjusted ahead of fulfilment. The
+          Subscribe &amp; Replace tier requires Stripe Billing to be configured;
+          until launch you may also opt-in by reserving a 3-Pack and contacting
+          us to convert.
         </p>
       </div>
     </section>

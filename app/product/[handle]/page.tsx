@@ -75,7 +75,9 @@ export default async function ProductPage({
               <span className="font-display text-5xl text-ink-900">
                 {product.displayPrice}
               </span>
-              <span className="text-sm text-ink-700">/ {product.displayUnit}</span>
+              <span className="text-sm text-ink-700">
+                / {product.displayUnit}
+              </span>
             </div>
 
             <p className="mt-6 text-base leading-relaxed text-ink-700">
@@ -100,8 +102,8 @@ export default async function ProductPage({
                 block
               />
               <p className="mt-4 text-xs leading-relaxed text-sage-700">
-                Reservations are processed securely through Stripe. You will
-                be charged at checkout. Cancel any time before September 2026
+                Reservations are processed securely through Stripe. You will be
+                charged at checkout. Cancel any time before September 2026
                 fulfilment for a full refund. Subscriptions can be paused or
                 cancelled from your billing portal.
               </p>
@@ -112,7 +114,9 @@ export default async function ProductPage({
                 <dt className="text-xs tracking-wider text-sage-700 uppercase">
                   Material
                 </dt>
-                <dd className="mt-1 text-ink-900">95% organic cotton, 5% Roica&trade; V550</dd>
+                <dd className="mt-1 text-ink-900">
+                  95% organic cotton, 5% Roica&trade; V550
+                </dd>
               </div>
               <div>
                 <dt className="text-xs tracking-wider text-sage-700 uppercase">
@@ -124,7 +128,9 @@ export default async function ProductPage({
                 <dt className="text-xs tracking-wider text-sage-700 uppercase">
                   Certifications
                 </dt>
-                <dd className="mt-1 text-ink-900">OEKO-TEX&reg; Standard 100</dd>
+                <dd className="mt-1 text-ink-900">
+                  OEKO-TEX&reg; Standard 100
+                </dd>
               </div>
               <div>
                 <dt className="text-xs tracking-wider text-sage-700 uppercase">
